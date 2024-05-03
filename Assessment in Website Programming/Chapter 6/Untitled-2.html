@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petrol Calculator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Caveat:wght@400..700&family=Courgette&family=Dancing+Script:wght@400..700&family=Didact+Gothic&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Imbue:opsz,wght@10..100,100..900&family=Jersey+15&family=Madimi+One&family=Merienda:wght@300..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Paytone+One&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Special+Elite&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "Roboto Mono", monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('petrol.PNG');
+            background-size: cover;
+        }
+
+        .calculator-container {
+            background-color: #fff9e3;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #3D2B2A; 
+        }
+
+        .input-container {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #F7F7F7;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3D2B2A;
+            color: #F7F7F7;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #FF5757;
+        }
+
+        p#totalCost {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h2>Petrol Calculator</h2>
+        <div class="input-container">
+            <label for="costPerLiter">Cost per Liter (in $):</label>
+            <input type="number" id="costPerLiter" value="1.72" step="0.01" min="0.01" placeholder="Enter cost per liter">
+        </div>
+        <div class="input-container">
+            <label for="litersPurchased">Liters Purchased:</label>
+            <input type="number" id="litersPurchased" value="0" step="0.01" min="0" placeholder="Enter liters purchased">
+        </div>
+        <button onclick="calculateTotal()">Calculate</button>
+        <p id="totalCost"></p>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            // Retrieve input values
+            const costPerLiter = parseFloat(document.getElementById('costPerLiter').value);
+            const litersPurchased = parseFloat(document.getElementById('litersPurchased').value);
+
+            // Calculate total cost
+            const totalCost = costPerLiter * litersPurchased;
+
+            // Display total cost
+            const totalCostDisplay = document.getElementById('totalCost');
+            totalCostDisplay.textContent = `Total Cost: $${totalCost.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
